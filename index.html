@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Stat Bar</title>
+</head>
+<style>
+
+
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmYUtfBBc4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+body {
+	padding: 50px;
+	background: #383f62;
+}
+
+.bar > div {
+	margin: 1px;
+	background: green;
+    background: linear-gradient(#111b4f, #235bc6);
+    border-radius: 4px;
+    flex: 1;
+    border: 1px solid #716565;
+}
+
+.bar {
+	margin-top: 38px;
+	width: 180px;
+	height: 38px;
+	padding: 2px;
+	border-radius: 9px;
+	border: 4px solid;
+	box-sizing: border-box;
+	display: flex;
+	background: linear-gradient(#102f77, #210e4a);
+	box-shadow: 0 0 1px 1px #002188, 0 0 4px 4px #070d205c;
+	position: relative;
+}
+
+.bar:after {
+	font-family: 'Roboto';
+	font-weight: 900;
+	font-size: 25px;
+	text-shadow: 0px 1px black, -1px -1px black, 1px -1px black, -1px 1px black, 0px 0px 7px black;
+	position: absolute;
+	top: -28px;
+}
+
+#r.bar:after { content:  'Resilience' }
+#r.bar { color: #49d0f9 }
+#r.bar.n1 > div:nth-child(-n+1),
+#r.bar.n2 > div:nth-child(-n+2),
+#r.bar.n3 > div:nth-child(-n+3),
+#r.bar.n4 > div:nth-child(-n+4),
+#r.bar.n5 > div:nth-child(-n+5),
+#r.bar.n6 > div:nth-child(-n+6),
+#r.bar.n7 > div:nth-child(-n+7),
+#r.bar.n8 > div:nth-child(-n+8),
+#r.bar.n9 > div:nth-child(-n+9),
+#r.bar.nX > div {
+	background: linear-gradient(#b3edff, #2bceff, #c46dae);
+	border: 1px solid #dbe9ff;
+}
+
+
+#e.bar:after { content:  'Endurance' }
+#e.bar { color: #8f8 }
+#e.bar.n1 > div:nth-child(-n+1),
+#e.bar.n2 > div:nth-child(-n+2),
+#e.bar.n3 > div:nth-child(-n+3),
+#e.bar.n4 > div:nth-child(-n+4),
+#e.bar.n5 > div:nth-child(-n+5),
+#e.bar.n6 > div:nth-child(-n+6),
+#e.bar.n7 > div:nth-child(-n+7),
+#e.bar.n8 > div:nth-child(-n+8),
+#e.bar.n9 > div:nth-child(-n+9),
+#e.bar.nX > div {
+	background: linear-gradient(#cdf9c7, #69f436, #7da4ff);
+	border: 1px solid #e5ffdb;
+}
+
+#i.bar:after { content:  'Inventivite' }
+#i.bar { color: #f9b }
+#i.bar.n1 > div:nth-child(-n+1),
+#i.bar.n2 > div:nth-child(-n+2),
+#i.bar.n3 > div:nth-child(-n+3),
+#i.bar.n4 > div:nth-child(-n+4),
+#i.bar.n5 > div:nth-child(-n+5),
+#i.bar.n6 > div:nth-child(-n+6),
+#i.bar.n7 > div:nth-child(-n+7),
+#i.bar.n8 > div:nth-child(-n+8),
+#i.bar.n9 > div:nth-child(-n+9),
+#i.bar.nX > div {
+	background: linear-gradient(#f9d0c7, #ff3971, #c47dff);
+	border: 1px solid #ffdbf3;
+}
+
+
+#s.bar:after { content:  'Social' }
+#s.bar { color: #ff8 }
+#s.bar.n1 > div:nth-child(-n+1),
+#s.bar.n2 > div:nth-child(-n+2),
+#s.bar.n3 > div:nth-child(-n+3),
+#s.bar.n4 > div:nth-child(-n+4),
+#s.bar.n5 > div:nth-child(-n+5),
+#s.bar.n6 > div:nth-child(-n+6),
+#s.bar.n7 > div:nth-child(-n+7),
+#s.bar.n8 > div:nth-child(-n+8),
+#s.bar.n9 > div:nth-child(-n+9),
+#s.bar.nX > div {
+	background: linear-gradient(#f9f9c7, #eab822, #ff7dd2);
+	border: 1px solid #feffdb;
+}
+
+</style>
+<body>
+<div id="r" class="bar n2">
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</div>
+<div id="e" class="bar n8">
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</div>
+<div id="i" class="bar n6">
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</div>
+<div id="s" class="bar n4">
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</div>
+</body>
+</html>
