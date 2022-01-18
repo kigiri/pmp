@@ -181,7 +181,7 @@ const entries = new URLSearchParams(location.search || localStorage.state || '')
 const state = Object.fromEntries([...entries].map(([k, v]) => [k, Number(v) || 0]))
 const add = (a, b) => a + b
 const handle = (bar, dir) => (e) => {
-	e.preventDefault()
+	e?.preventDefault()
 	if ((state[bar.id] + dir) > 10 || (state[bar.id] + dir) < 0) return
 	const total = Object.values(state).reduce(add)
 	if ((total + dir) > 20 || (total + dir) < 0) return
@@ -191,11 +191,12 @@ const handle = (bar, dir) => (e) => {
 	history.replaceState('', null, `?${localStorage.state = new URLSearchParams(state)}`)
 }
 for (const bar of bars) {
+	state[bar.id] = state[bar.id] || 0
 	bar.addEventListener('contextmenu', handle(bar, -1))
 	bar.addEventListener('click', handle(bar, 1))
-	bar.classList.add(`n${(state[bar.id] = state[bar.id] || 0)}`)
+	handle(bar, 0)()
 }
-history.replaceState('', null, `?${localStorage.state = new URLSearchParams(state)}`)
+
 </script>
 </body>
 </html>
