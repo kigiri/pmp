@@ -84,7 +84,7 @@ body {
 .bar.n6:hover > div:nth-child(7),
 .bar.n7:hover > div:nth-child(8),
 .bar.n8:hover > div:nth-child(9),
-.bar.n9:hover > div {
+.bar.n9:hover > div:nth-child(10) {
 	background: linear-gradient(#2050b3, #5992ff, #537ca8);
 	border: 1px solid #a4adbb;
 	animation-name: pulse;
@@ -128,7 +128,7 @@ body {
 	border: 1px solid #e5ffdb;
 }
 
-#i.bar:after { content:  'Inventivite' }
+#i.bar:after { content:  'Inventivité' }
 #i.bar { color: #f9b }
 #i.bar.n1 > div:nth-child(-n+1),
 #i.bar.n2 > div:nth-child(-n+2),
@@ -163,36 +163,39 @@ body {
 </style>
 <body>
 <div id="count">20</div>
-<div id="r" class="bar n0">
+<div id="r" class="bar">
 	<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 </div>
-<div id="e" class="bar n0">
+<div id="e" class="bar">
 	<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 </div>
-<div id="i" class="bar n0">
+<div id="i" class="bar">
 	<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 </div>
-<div id="s" class="bar n0">
+<div id="s" class="bar">
 	<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 </div>
 <script>
 const bars = document.querySelectorAll('.bar')
-const state = {}
+const entries = new URLSearchParams(location.search || localStorage.state || '')
+const state = Object.fromEntries([...entries].map(([k, v]) => [k, Number(v) || 0]))
 const add = (a, b) => a + b
 const handle = (bar, dir) => (e) => {
 	e.preventDefault()
-	if (state[bar.id] >= 10) return
+	if ((state[bar.id] + dir) > 10 || (state[bar.id] + dir) < 0) return
 	const total = Object.values(state).reduce(add)
 	if ((total + dir) > 20 || (total + dir) < 0) return
 	bar.classList.remove(`n${state[bar.id]}`)
 	bar.classList.add(`n${state[bar.id] += dir}`)
 	count.textContent = 20 - (total + dir)
+	history.replaceState('', null, `?${localStorage.state = new URLSearchParams(state)}`)
 }
 for (const bar of bars) {
-	state[bar.id] = 0
 	bar.addEventListener('contextmenu', handle(bar, -1))
 	bar.addEventListener('click', handle(bar, 1))
+	bar.classList.add(`n${(state[bar.id] = state[bar.id] || 0)}`)
 }
+history.replaceState('', null, `?${localStorage.state = new URLSearchParams(state)}`)
 </script>
 </body>
 </html>
