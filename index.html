@@ -45,14 +45,56 @@ body {
 	position: relative;
 }
 
-.bar:after {
+#count, .bar:after {
 	font-family: 'Roboto';
 	font-weight: 900;
 	font-size: 25px;
 	text-shadow: 0px 1px black, -1px -1px black, 1px -1px black, -1px 1px black, 0px 0px 7px black;
-	position: absolute;
-	top: -28px;
 }
+
+.bar:after {
+	top: -28px;
+	position: absolute;
+}
+
+#count {
+	color: #fff;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.bar.n0:hover > div:nth-child(1),
+.bar.n1:hover > div:nth-child(2),
+.bar.n2:hover > div:nth-child(3),
+.bar.n3:hover > div:nth-child(4),
+.bar.n4:hover > div:nth-child(5),
+.bar.n5:hover > div:nth-child(6),
+.bar.n6:hover > div:nth-child(7),
+.bar.n7:hover > div:nth-child(8),
+.bar.n8:hover > div:nth-child(9),
+.bar.n9:hover > div {
+	background: linear-gradient(#2050b3, #5992ff, #537ca8);
+	border: 1px solid #a4adbb;
+	animation-name: pulse;
+    animation-duration: 1.0s;
+    animation-timing-function: ease-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+}
+
 
 #r.bar:after { content:  'Resilience' }
 #r.bar { color: #49d0f9 }
@@ -65,11 +107,10 @@ body {
 #r.bar.n7 > div:nth-child(-n+7),
 #r.bar.n8 > div:nth-child(-n+8),
 #r.bar.n9 > div:nth-child(-n+9),
-#r.bar.nX > div {
+#r.bar.n10 > div {
 	background: linear-gradient(#b3edff, #2bceff, #c46dae);
 	border: 1px solid #dbe9ff;
 }
-
 
 #e.bar:after { content:  'Endurance' }
 #e.bar { color: #8f8 }
@@ -82,7 +123,7 @@ body {
 #e.bar.n7 > div:nth-child(-n+7),
 #e.bar.n8 > div:nth-child(-n+8),
 #e.bar.n9 > div:nth-child(-n+9),
-#e.bar.nX > div {
+#e.bar.n10 > div {
 	background: linear-gradient(#cdf9c7, #69f436, #7da4ff);
 	border: 1px solid #e5ffdb;
 }
@@ -98,11 +139,10 @@ body {
 #i.bar.n7 > div:nth-child(-n+7),
 #i.bar.n8 > div:nth-child(-n+8),
 #i.bar.n9 > div:nth-child(-n+9),
-#i.bar.nX > div {
+#i.bar.n10 > div {
 	background: linear-gradient(#f9d0c7, #ff3971, #c47dff);
 	border: 1px solid #ffdbf3;
 }
-
 
 #s.bar:after { content:  'Social' }
 #s.bar { color: #ff8 }
@@ -115,60 +155,44 @@ body {
 #s.bar.n7 > div:nth-child(-n+7),
 #s.bar.n8 > div:nth-child(-n+8),
 #s.bar.n9 > div:nth-child(-n+9),
-#s.bar.nX > div {
+#s.bar.n10 > div {
 	background: linear-gradient(#f9f9c7, #eab822, #ff7dd2);
 	border: 1px solid #feffdb;
 }
 
 </style>
 <body>
-<div id="r" class="bar n2">
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
+<div id="count">20</div>
+<div id="r" class="bar n0">
+	<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 </div>
-<div id="e" class="bar n8">
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
+<div id="e" class="bar n0">
+	<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 </div>
-<div id="i" class="bar n6">
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
+<div id="i" class="bar n0">
+	<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 </div>
-<div id="s" class="bar n4">
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
+<div id="s" class="bar n0">
+	<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 </div>
+<script>
+const bars = document.querySelectorAll('.bar')
+const state = {}
+const add = (a, b) => a + b
+const handle = (bar, dir) => (e) => {
+	e.preventDefault()
+	if (state[bar.id] >= 10) return
+	const total = Object.values(state).reduce(add)
+	if ((total + dir) > 20 || (total + dir) < 0) return
+	bar.classList.remove(`n${state[bar.id]}`)
+	bar.classList.add(`n${state[bar.id] += dir}`)
+	count.textContent = 20 - (total + dir)
+}
+for (const bar of bars) {
+	state[bar.id] = 0
+	bar.addEventListener('contextmenu', handle(bar, -1))
+	bar.addEventListener('click', handle(bar, 1))
+}
+</script>
 </body>
 </html>
