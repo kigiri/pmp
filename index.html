@@ -53,26 +53,29 @@ body {
 }
 
 .bar:after {
-	top: -28px;
-	position: absolute;
+  top: -28px;
+  position: absolute;
 }
 
 #count {
-	color: #fff;
+  color: #fff;
 }
 
 @keyframes pulse {
-    0% {
-        opacity: 1;
-    }
+  0% { opacity: 1 }
+  50% { opacity: 0.5 }
+  100% { opacity: 1 }
+}
 
-    50% {
-        opacity: 0.5;
-    }
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0) }
+  20%, 80% { transform: translate3d(2px, 0, 0) }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0) }
+  40%, 60% { transform: translate3d(4px, 0, 0) }
+}
 
-    100% {
-        opacity: 1;
-    }
+.shake {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
 }
 
 .bar.n0:hover > div:nth-child(1),
@@ -176,15 +179,22 @@ body {
 	<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 </div>
 <script>
+const count = document.getElementById('count')
 const bars = document.querySelectorAll('.bar')
 const entries = new URLSearchParams(location.search || localStorage.state || '')
 const state = Object.fromEntries([...entries].map(([k, v]) => [k, Number(v) || 0]))
+const shake = elem => {
+	if (elem.classList.contains('shake')) return
+	elem.classList.add('shake')
+	setTimeout(() => elem.classList.remove('shake'), 1000)
+}
+
 const add = (a, b) => a + b
 const handle = (bar, dir) => (e) => {
 	e?.preventDefault()
-	if ((state[bar.id] + dir) > 10 || (state[bar.id] + dir) < 0) return
+	if ((state[bar.id] + dir) > 10 || (state[bar.id] + dir) < 0) return shake(bar)
 	const total = Object.values(state).reduce(add)
-	if ((total + dir) > 20 || (total + dir) < 0) return
+	if ((total + dir) > 20 || (total + dir) < 0) return shake(count)
 	bar.classList.remove(`n${state[bar.id]}`)
 	bar.classList.add(`n${state[bar.id] += dir}`)
 	count.textContent = 20 - (total + dir)
