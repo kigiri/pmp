@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Stat Bar</title>
+  <meta charset="utf-8">
+  <title>Stat Bar</title>
 </head>
 <style>
 
@@ -18,13 +18,13 @@
 }
 
 body {
-	padding: 50px;
-	background: #383f62;
+  padding: 50px;
+  background: #383f62;
 }
 
 .bar > div {
-	margin: 1px;
-	background: green;
+  margin: 1px;
+  background: green;
     background: linear-gradient(#111b4f, #235bc6);
     border-radius: 4px;
     flex: 1;
@@ -32,24 +32,24 @@ body {
 }
 
 .bar {
-	margin-top: 38px;
-	width: 180px;
-	height: 38px;
-	padding: 2px;
-	border-radius: 9px;
-	border: 4px solid;
-	box-sizing: border-box;
-	display: flex;
-	background: linear-gradient(#102f77, #210e4a);
-	box-shadow: 0 0 1px 1px #002188, 0 0 4px 4px #070d205c;
-	position: relative;
+  margin-top: 38px;
+  width: 180px;
+  height: 38px;
+  padding: 2px;
+  border-radius: 9px;
+  border: 4px solid;
+  box-sizing: border-box;
+  display: flex;
+  background: linear-gradient(#102f77, #210e4a);
+  box-shadow: 0 0 1px 1px #002188, 0 0 4px 4px #070d205c;
+  position: relative;
 }
 
 #count, .bar:after {
-	font-family: 'Roboto';
-	font-weight: 900;
-	font-size: 25px;
-	text-shadow: 0px 1px black, -1px -1px black, 1px -1px black, -1px 1px black, 0px 0px 7px black;
+  font-family: 'Roboto';
+  font-weight: 900;
+  font-size: 25px;
+  text-shadow: 0px 1px black, -1px -1px black, 1px -1px black, -1px 1px black, 0px 0px 7px black;
 }
 
 .bar:after {
@@ -88,9 +88,9 @@ body {
 .bar.n7:hover > div:nth-child(8),
 .bar.n8:hover > div:nth-child(9),
 .bar.n9:hover > div:nth-child(10) {
-	background: linear-gradient(#2050b3, #5992ff, #537ca8);
-	border: 1px solid #a4adbb;
-	animation-name: pulse;
+  background: linear-gradient(#2050b3, #5992ff, #537ca8);
+  border: 1px solid #a4adbb;
+  animation-name: pulse;
     animation-duration: 1.0s;
     animation-timing-function: ease-out;
     animation-direction: alternate;
@@ -111,8 +111,8 @@ body {
 #r.bar.n8 > div:nth-child(-n+8),
 #r.bar.n9 > div:nth-child(-n+9),
 #r.bar.n10 > div {
-	background: linear-gradient(#b3edff, #2bceff, #c46dae);
-	border: 1px solid #dbe9ff;
+  background: linear-gradient(#b3edff, #2bceff, #c46dae);
+  border: 1px solid #dbe9ff;
 }
 
 #e.bar:after { content:  'Endurance' }
@@ -127,8 +127,8 @@ body {
 #e.bar.n8 > div:nth-child(-n+8),
 #e.bar.n9 > div:nth-child(-n+9),
 #e.bar.n10 > div {
-	background: linear-gradient(#cdf9c7, #69f436, #7da4ff);
-	border: 1px solid #e5ffdb;
+  background: linear-gradient(#cdf9c7, #69f436, #7da4ff);
+  border: 1px solid #e5ffdb;
 }
 
 #i.bar:after { content:  'Inventivité' }
@@ -143,8 +143,8 @@ body {
 #i.bar.n8 > div:nth-child(-n+8),
 #i.bar.n9 > div:nth-child(-n+9),
 #i.bar.n10 > div {
-	background: linear-gradient(#f9d0c7, #ff3971, #c47dff);
-	border: 1px solid #ffdbf3;
+  background: linear-gradient(#f9d0c7, #ff3971, #c47dff);
+  border: 1px solid #ffdbf3;
 }
 
 #s.bar:after { content:  'Social' }
@@ -159,24 +159,24 @@ body {
 #s.bar.n8 > div:nth-child(-n+8),
 #s.bar.n9 > div:nth-child(-n+9),
 #s.bar.n10 > div {
-	background: linear-gradient(#f9f9c7, #eab822, #ff7dd2);
-	border: 1px solid #feffdb;
+  background: linear-gradient(#f9f9c7, #eab822, #ff7dd2);
+  border: 1px solid #feffdb;
 }
 
 </style>
 <body>
 <div id="count">20</div>
 <div id="r" class="bar">
-	<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+  <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 </div>
 <div id="e" class="bar">
-	<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+  <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 </div>
 <div id="i" class="bar">
-	<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+  <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 </div>
 <div id="s" class="bar">
-	<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+  <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 </div>
 <script>
 const count = document.getElementById('count')
@@ -184,27 +184,27 @@ const bars = document.querySelectorAll('.bar')
 const entries = new URLSearchParams(location.search || localStorage.state || '')
 const state = Object.fromEntries([...entries].map(([k, v]) => [k, Number(v) || 0]))
 const shake = elem => {
-	if (elem.classList.contains('shake')) return
-	elem.classList.add('shake')
-	setTimeout(() => elem.classList.remove('shake'), 1000)
+  if (elem.classList.contains('shake')) return
+  elem.classList.add('shake')
+  setTimeout(() => elem.classList.remove('shake'), 1000)
 }
 
 const add = (a, b) => a + b
 const handle = (bar, dir) => (e) => {
-	e?.preventDefault()
-	if ((state[bar.id] + dir) > 10 || (state[bar.id] + dir) < 0) return shake(bar)
-	const total = Object.values(state).reduce(add)
-	if ((total + dir) > 20 || (total + dir) < 0) return shake(count)
-	bar.classList.remove(`n${state[bar.id]}`)
-	bar.classList.add(`n${state[bar.id] += dir}`)
-	count.textContent = 20 - (total + dir)
-	history.replaceState('', null, `?${localStorage.state = new URLSearchParams(state)}`)
+  e?.preventDefault()
+  if ((state[bar.id] + dir) > 10 || (state[bar.id] + dir) < 0) return shake(bar)
+  const total = Object.values(state).reduce(add)
+  if ((total + dir) > 20 || (total + dir) < 0) return shake(count)
+  bar.classList.remove(`n${state[bar.id]}`)
+  bar.classList.add(`n${state[bar.id] += dir}`)
+  count.textContent = 20 - (total + dir)
+  history.replaceState('', null, `?${localStorage.state = new URLSearchParams(state)}`)
 }
 for (const bar of bars) {
-	state[bar.id] = state[bar.id] || 0
-	bar.addEventListener('contextmenu', handle(bar, -1))
-	bar.addEventListener('click', handle(bar, 1))
-	handle(bar, 0)()
+  state[bar.id] = state[bar.id] || 0
+  bar.addEventListener('contextmenu', handle(bar, -1))
+  bar.addEventListener('click', handle(bar, 1))
+  handle(bar, 0)()
 }
 
 </script>
